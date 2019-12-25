@@ -1,0 +1,20 @@
+<div
+  fxFlex
+  fxLayout="row"
+  fxLayoutAlign="center"
+  fxLayoutGap="10px"
+  fxLayout.xs="column"
+>
+  <mat-card class="card">
+    <mat-card-content>
+      <div class="container">
+        <app-form></app-form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card fxFlex="50%" class="card">
+    <mat-card-content>
+      <app-line-chart [data]="data"></app-line-chart>
+    </mat-card-content>
+  </mat-card>
+</div>

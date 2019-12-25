@@ -1,0 +1,58 @@
+<form
+  fxFlex
+  fxLayout="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="10px"
+  [formGroup]="myForm"
+  (ngSubmit)="onSubmit(myForm.value)"
+>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Starting capital"
+      formControlName="startingCapitalAmount"
+      type="number"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Period</mat-label>
+    <mat-select formControlName="typeOfPeriod">
+      <mat-option *ngFor="let period of periods" [value]="period.value">
+        {{ period.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Number of periods"
+      formControlName="numberOfPeriods"
+      type="number"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Addition amount per period"
+      formControlName="additionAmount"
+      type="number"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Return"
+      formControlName="returnPercentage"
+      type="number"
+    />
+  </mat-form-field>
+  <div>
+    <button mat-raised-button color="primary" type="submit">
+      Get data!
+    </button>
+  </div>
+</form>

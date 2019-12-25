@@ -1,0 +1,41 @@
+app-line-chart {
+  #chart {
+    margin: 0px;
+    overflow: hidden;
+    height: calc(100vh - 150px);
+  }
+
+  circle {
+    fill: steelblue;
+  }
+
+  .line-path {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 2;
+    stroke-linejoin: round;
+  }
+
+  text {
+    font-family: sans-serif;
+  }
+
+  .tick text {
+    font-size: 0.6rem;
+    fill: white;
+  }
+
+  .tick line {
+    stroke: #c0c0bb;
+  }
+
+  .axis-label {
+    font-size: 1.25rem;
+    fill: white;
+  }
+
+  .title {
+    font-size: 1.75rem;
+    fill: white;
+  }
+}
