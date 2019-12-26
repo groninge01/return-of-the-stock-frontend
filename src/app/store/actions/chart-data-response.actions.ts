@@ -1,11 +1,11 @@
-import { createAction, props } from "@ngrx/store";
-import { ChartDataResponse } from "../../data/data.model";
+import { createAction, props } from '@ngrx/store';
+import { ChartDataResponse } from '../../data/data.model';
 
 export const loadChartDataResponse = createAction(
-  "[ChartDataResponse] Load ChartDataResponse"
+  '[ChartDataResponse] Load ChartDataResponse'
 );
 
 export const setChartDataResponse = createAction(
-  "[ChartDataResponse] Set ChartDataResponse",
+  '[ChartDataResponse] Set ChartDataResponse',
   props<{ chartDataResponses: ChartDataResponse[] }>()
 );

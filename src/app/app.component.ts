@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
-import { distinctUntilChanged } from "rxjs/operators";
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 // import {
 //   AppState,
 //   selectFeatureChartDataResponse
-// } from "./store/reducers/chart-data-response.reducer";
+// } from './store/reducers/chart-data-response.reducer';
 
-import { ChartDataResponse } from "./data/data.model";
+import { ChartDataResponse } from './data/data.model';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   data: ChartDataResponse[];

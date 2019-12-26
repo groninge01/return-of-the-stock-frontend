@@ -1,7 +1,7 @@
-import { Action, createReducer, on, createSelector } from "@ngrx/store";
-import * as ChartDataActions from "../actions/chart-data.actions";
+import { Action, createReducer, on, createSelector } from '@ngrx/store';
+import * as ChartDataActions from '../actions/chart-data.actions';
 
-export const chartDataFeatureKey = "chartData";
+export const chartDataFeatureKey = 'chartData';
 
 export interface FeatureState {
   startingCapitalAmount: number;

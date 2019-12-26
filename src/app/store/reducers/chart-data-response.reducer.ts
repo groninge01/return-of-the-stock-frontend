@@ -1,8 +1,8 @@
-import { Action, createReducer, on, createSelector } from "@ngrx/store";
-import * as ChartDataResponseActions from "../actions/chart-data-response.actions";
-import { ChartDataResponse } from "../../data/data.model";
+import { Action, createReducer, on, createSelector } from '@ngrx/store';
+import * as ChartDataResponseActions from '../actions/chart-data-response.actions';
+import { ChartDataResponse } from '../../data/data.model';
 
-export const chartDataResponseFeatureKey = "chartDataResponse";
+export const chartDataResponseFeatureKey = 'chartDataResponse';
 
 export interface FeatureState {
   chartDataResponses: ChartDataResponse[];

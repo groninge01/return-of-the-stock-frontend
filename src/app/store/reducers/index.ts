@@ -1,7 +1,7 @@
-import { ActionReducerMap, MetaReducer, ActionReducer } from "@ngrx/store";
-import { environment } from "../../../environments/environment";
-import * as fromChartData from "./chart-data-request.reducer";
-import * as fromChartDataResponse from "./chart-data-response.reducer";
+import { ActionReducerMap, MetaReducer, ActionReducer } from '@ngrx/store';
+import { environment } from '../../../environments/environment';
+import * as fromChartData from './chart-data-request.reducer';
+import * as fromChartDataResponse from './chart-data-response.reducer';
 
 export interface State {
   [fromChartData.chartDataFeatureKey]: fromChartData.FeatureState;
@@ -17,8 +17,8 @@ export const reducers: ActionReducerMap<State> = {
 // console.log all actions
 export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
   return function(state, action) {
-    console.log("state", state);
-    console.log("action", action);
+    console.log('state', state);
+    console.log('action', action);
 
     return reducer(state, action);
   };

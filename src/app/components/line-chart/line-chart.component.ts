@@ -5,19 +5,19 @@ import {
   OnChanges,
   ViewChild,
   ViewEncapsulation
-} from "@angular/core";
-import * as d3 from "d3";
+} from '@angular/core';
+import * as d3 from 'd3';
 
-import { ChartDataResponse } from "src/app/data/data.model";
+import { ChartDataResponse } from 'src/app/data/data.model';
 
 @Component({
-  selector: "app-line-chart",
+  selector: 'app-line-chart',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: "./line-chart.component.html",
-  styleUrls: ["./line-chart.component.scss"]
+  templateUrl: './line-chart.component.html',
+  styleUrls: ['./line-chart.component.scss']
 })
 export class LineChartComponent implements OnChanges {
-  @ViewChild("chart", { static: false })
+  @ViewChild('chart', { static: false })
   private chartContainer: ElementRef;
 
   @Input()
@@ -34,7 +34,7 @@ export class LineChartComponent implements OnChanges {
   }
 
   private createChart(): void {
-    d3.select("svg").remove();
+    d3.select('svg').remove();
 
     if (!this.chartContainer) {
       return;
@@ -48,20 +48,20 @@ export class LineChartComponent implements OnChanges {
 
     const svg = d3
       .select(element)
-      .append("svg")
-      .attr("width", "100%")
-      .attr("height", "100%");
-    // .attr("preserveAspectRatio", "xMinYMin meet")
-    // .attr("viewBox", "0 0 " + width + " " + height);1
+      .append('svg')
+      .attr('width', '100%')
+      .attr('height', '100%');
+    // .attr('preserveAspectRatio', 'xMinYMin meet')
+    // .attr('viewBox', '0 0 ' + width + ' ' + height);1
 
-    const title = "Total growth of capital";
+    const title = 'Total growth of capital';
 
     const xValue = d => d.period;
-    const xAxisLabel = "Period";
+    const xAxisLabel = 'Period';
 
     const yValue = d => d.end_val;
     const circleRadius = 6;
-    const yAxisLabel = "Capital";
+    const yAxisLabel = 'Capital';
 
     const margin = { top: 50, right: 10, bottom: 60, left: 85 };
     const innerWidth = width - margin.left - margin.right;
@@ -80,8 +80,8 @@ export class LineChartComponent implements OnChanges {
       .nice();
 
     const g = svg
-      .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
+      .append('g')
+      .attr('transform', `translate(${margin.left},${margin.top})`);
 
     const xAxis = d3
       .axisBottom(xScale)
@@ -93,32 +93,32 @@ export class LineChartComponent implements OnChanges {
       .tickSize(-innerWidth)
       .tickPadding(15);
 
-    const yAxisG = g.append("g").call(yAxis);
-    yAxisG.selectAll(".domain").remove();
+    const yAxisG = g.append('g').call(yAxis);
+    yAxisG.selectAll('.domain').remove();
 
     yAxisG
-      .append("text")
-      .attr("class", "axis-label")
-      .attr("y", -70)
-      .attr("x", -innerHeight / 2)
-      .attr("fill", "black")
-      .attr("transform", `rotate(-90)`)
-      .attr("text-anchor", "middle")
+      .append('text')
+      .attr('class', 'axis-label')
+      .attr('y', -70)
+      .attr('x', -innerHeight / 2)
+      .attr('fill', 'black')
+      .attr('transform', `rotate(-90)`)
+      .attr('text-anchor', 'middle')
       .text(yAxisLabel);
 
     const xAxisG = g
-      .append("g")
+      .append('g')
       .call(xAxis)
-      .attr("transform", `translate(0,${innerHeight})`);
+      .attr('transform', `translate(0,${innerHeight})`);
 
-    xAxisG.select(".domain").remove();
+    xAxisG.select('.domain').remove();
 
     xAxisG
-      .append("text")
-      .attr("class", "axis-label")
-      .attr("y", 50)
-      .attr("x", innerWidth / 2)
-      .attr("fill", "black")
+      .append('text')
+      .attr('class', 'axis-label')
+      .attr('y', 50)
+      .attr('x', innerWidth / 2)
+      .attr('fill', 'black')
       .text(xAxisLabel);
 
     const lineGenerator = d3
@@ -127,13 +127,13 @@ export class LineChartComponent implements OnChanges {
       .y(d => yScale(yValue(d)))
       .curve(d3.curveBasis);
 
-    g.append("path")
-      .attr("class", "line-path")
-      .attr("d", lineGenerator(data));
+    g.append('path')
+      .attr('class', 'line-path')
+      .attr('d', lineGenerator(data));
 
-    g.append("text")
-      .attr("class", "title")
-      .attr("y", -25)
+    g.append('text')
+      .attr('class', 'title')
+      .attr('y', -25)
       .text(title);
   }
 }

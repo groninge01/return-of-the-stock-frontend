@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { switchMap, map, withLatestFrom } from "rxjs/operators";
-import { Store } from "@ngrx/store";
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { switchMap, map, withLatestFrom } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 
-import { setChartData } from "../actions/chart-data.actions";
-import { setChartDataResponse } from "../actions/chart-data-response.actions";
-import { selectFeatureChartData } from "../reducers/chart-data-request.reducer";
-import { ChartDataResponse } from "src/app/data/data.model";
-import { CalculateReturnsService } from "src/app/services/calculate-returns.service";
+import { setChartData } from '../actions/chart-data.actions';
+import { setChartDataResponse } from '../actions/chart-data-response.actions';
+import { selectFeatureChartData } from '../reducers/chart-data-request.reducer';
+import { ChartDataResponse } from 'src/app/data/data.model';
+import { CalculateReturnsService } from 'src/app/services/calculate-returns.service';
 
 @Injectable()
 export class AppEffects {

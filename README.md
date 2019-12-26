@@ -1,1 +1,1 @@
-"# return-of-the-stock-frontend" 
+'# return-of-the-stock-frontend' 
