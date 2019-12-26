@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { environment } from '../../environments/environment';
+
 import { ChartDataRequest } from 'src/app/data/data.model';
 
 @Injectable({
@@ -10,12 +12,9 @@ export class CalculateReturnsService {
   constructor(private http: HttpClient) {}
 
   post(request: ChartDataRequest) {
-    return this.http.post('apitest/', {
-      startingCapitalAmount: request.startingCapitalAmount,
-      additionAmount: request.additionAmount,
-      returnPercentage: request.returnPercentage,
-      numberOfPeriods: request.numberOfPeriods,
-      typeOfPeriod: request.typeOfPeriod
-    });
+    return this.http.post(
+      `${environment.apiHost}${environment.apiUrl}`,
+      request
+    );
   }
 }
