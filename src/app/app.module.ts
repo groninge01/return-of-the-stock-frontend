@@ -17,6 +17,8 @@ import { AppComponent } from "./app.component";
 import { LineChartComponent } from "./components/line-chart/line-chart.component";
 import { FormComponent } from "./components/form/form.component";
 
+import { CalculateReturnsService } from "src/app/services/calculate-returns.service";
+
 import { environment } from "../environments/environment";
 
 @NgModule({
@@ -42,7 +44,7 @@ import { environment } from "../environments/environment";
       logOnly: environment.production
     })
   ],
-  providers: [],
+  providers: [CalculateReturnsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
