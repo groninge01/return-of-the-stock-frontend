@@ -3,15 +3,26 @@ import { environment } from '../../../environments/environment';
 import * as fromChartData from './chart-data-request.reducer';
 import * as fromChartDataResponse from './chart-data-response.reducer';
 
+// because of AOT...
+// export interface State {
+//   [fromChartData.chartDataFeatureKey]: fromChartData.FeatureState;
+//   [fromChartDataResponse.chartDataResponseFeatureKey]: fromChartDataResponse.FeatureState;
+// }
+
+// export const reducers: ActionReducerMap<State> = {
+//   [fromChartData.chartDataFeatureKey]: fromChartData.reducer,
+//   [fromChartDataResponse.chartDataResponseFeatureKey]:
+//     fromChartDataResponse.reducer
+// };
+
 export interface State {
-  [fromChartData.chartDataFeatureKey]: fromChartData.FeatureState;
-  [fromChartDataResponse.chartDataResponseFeatureKey]: fromChartDataResponse.FeatureState;
+  chartData: fromChartData.FeatureState;
+  chartDataResponse: fromChartDataResponse.FeatureState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  [fromChartData.chartDataFeatureKey]: fromChartData.reducer,
-  [fromChartDataResponse.chartDataResponseFeatureKey]:
-    fromChartDataResponse.reducer
+  chartData: fromChartData.reducer,
+  chartDataResponse: fromChartDataResponse.reducer
 };
 
 // console.log all actions
