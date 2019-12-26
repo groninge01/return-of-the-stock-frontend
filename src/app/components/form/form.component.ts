@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
-import { Period, ChartDataRequest } from "../data/data.model";
-import { setChartData } from "../store/actions/chart-data.actions";
+import { Period, ChartDataRequest } from "../../data/data.model";
+import { setChartData } from "../../store/actions/chart-data.actions";
 
 @Component({
   selector: "app-form",
@@ -14,10 +14,7 @@ export class FormComponent implements OnInit {
   myForm: FormGroup;
   periods: Period[] = [{ value: "Month" }, { value: "Year" }];
 
-  constructor(
-    private fb: FormBuilder,
-    private store: Store<any>
-  ) {}
+  constructor(private fb: FormBuilder, private store: Store<any>) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({

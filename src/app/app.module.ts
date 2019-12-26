@@ -14,8 +14,8 @@ import { reducers, metaReducers } from "./store/reducers";
 import { MaterialModule } from "./material/material.module";
 
 import { AppComponent } from "./app.component";
-import { LineChartComponent } from "./line-chart/line-chart.component";
-import { FormComponent } from "./form/form.component";
+import { LineChartComponent } from "./components/line-chart/line-chart.component";
+import { FormComponent } from "./components/form/form.component";
 
 import { environment } from "../environments/environment";
 
