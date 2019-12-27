@@ -18,11 +18,10 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      startingCapitalAmount: [],
-      additionAmount: [],
-      returnPercentage: [0.05],
-      numberOfPeriods: [],
-      typeOfPeriod: ['Year']
+      startingCapitalAmount: [15000],
+      additionAmount: [1000],
+      numberOfPeriods: [144],
+      typeOfPeriod: ['Month']
     });
   }
 

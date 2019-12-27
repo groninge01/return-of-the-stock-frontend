@@ -59,7 +59,7 @@ export class LineChartComponent implements OnChanges {
     const xValue = d => d.period;
     const xAxisLabel = 'Period';
 
-    const yValue = d => d.end_val;
+    const yValue = d => d.avg;
     const circleRadius = 6;
     const yAxisLabel = 'Capital';
 

@@ -4,16 +4,14 @@ export interface Period {
 
 export interface ChartDataResponse {
   period: number;
-  beg_val: number;
-  deposit: number;
-  ret: number;
-  end_val: number;
+  avg: number;
+  min: number;
+  max: number;
 }
 
 export interface ChartDataRequest {
   startingCapitalAmount: number;
   additionAmount: number;
-  returnPercentage: number;
   numberOfPeriods: number;
   typeOfPeriod: string;
 }

@@ -6,7 +6,6 @@ export const chartDataFeatureKey = 'chartData';
 export interface FeatureState {
   startingCapitalAmount: number;
   additionAmount: number;
-  returnPercentage: number;
   numberOfPeriods: number;
   typeOfPeriod: string;
 }
@@ -18,7 +17,6 @@ export interface AppState {
 export const initialState: FeatureState = {
   startingCapitalAmount: null,
   additionAmount: null,
-  returnPercentage: null,
   numberOfPeriods: null,
   typeOfPeriod: null
 };
@@ -29,7 +27,6 @@ const chartDataReducer = createReducer(
     ...state,
     startingCapitalAmount: chartDataRequest.startingCapitalAmount,
     additionAmount: chartDataRequest.additionAmount,
-    returnPercentage: chartDataRequest.returnPercentage,
     numberOfPeriods: chartDataRequest.numberOfPeriods,
     typeOfPeriod: chartDataRequest.typeOfPeriod
   }))

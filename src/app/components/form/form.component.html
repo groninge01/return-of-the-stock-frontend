@@ -27,7 +27,9 @@
   <mat-form-field>
     <input
       matInput
-      placeholder="Number of periods"
+      placeholder="Number of {{
+        myForm.controls.typeOfPeriod.value | lowercase
+      }}s"
       formControlName="numberOfPeriods"
       type="number"
     />
@@ -36,20 +38,14 @@
   <mat-form-field>
     <input
       matInput
-      placeholder="Addition amount per period"
+      placeholder="Addition amount per {{
+        myForm.controls.typeOfPeriod.value | lowercase
+      }}"
       formControlName="additionAmount"
       type="number"
     />
   </mat-form-field>
 
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Return"
-      formControlName="returnPercentage"
-      type="number"
-    />
-  </mat-form-field>
   <div>
     <button mat-raised-button color="primary" type="submit">
       Get data!
