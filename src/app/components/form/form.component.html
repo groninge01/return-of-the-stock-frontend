@@ -9,17 +9,17 @@
   <mat-form-field>
     <input
       matInput
-      placeholder="Starting capital"
+      placeholder="Initial Investment"
       formControlName="startingCapitalAmount"
       type="number"
     />
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Period</mat-label>
+    <mat-label>Compound Frequency</mat-label>
     <mat-select formControlName="typeOfPeriod">
       <mat-option *ngFor="let period of periods" [value]="period.value">
-        {{ period.value }}
+        {{ period.viewValue }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -27,10 +27,8 @@
   <mat-form-field>
     <input
       matInput
-      placeholder="Number of {{
-        myForm.controls.typeOfPeriod.value | lowercase
-      }}s"
-      formControlName="numberOfPeriods"
+      placeholder="{{ contributionType }} Contribution"
+      formControlName="additionAmount"
       type="number"
     />
   </mat-form-field>
@@ -38,10 +36,8 @@
   <mat-form-field>
     <input
       matInput
-      placeholder="Addition amount per {{
-        myForm.controls.typeOfPeriod.value | lowercase
-      }}"
-      formControlName="additionAmount"
+      placeholder="Number Of {{ myForm.controls.typeOfPeriod.value }}s"
+      formControlName="numberOfPeriods"
       type="number"
     />
   </mat-form-field>

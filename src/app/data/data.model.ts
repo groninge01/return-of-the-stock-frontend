@@ -1,4 +1,5 @@
 export interface Period {
+  viewValue: string;
   value: string;
 }
 

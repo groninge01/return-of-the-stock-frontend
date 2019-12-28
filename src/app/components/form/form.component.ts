@@ -12,7 +12,10 @@ import { setChartData } from '../../store/actions/chart-data.actions';
 })
 export class FormComponent implements OnInit {
   myForm: FormGroup;
-  periods: Period[] = [{ value: 'Month' }, { value: 'Year' }];
+  periods: Period[] = [
+    { viewValue: 'Monthly', value: 'Month' },
+    { viewValue: 'Annually', value: 'Year' }
+  ];
 
   constructor(private fb: FormBuilder, private store: Store<any>) {}
 
@@ -23,6 +26,19 @@ export class FormComponent implements OnInit {
       numberOfPeriods: [144],
       typeOfPeriod: ['Month']
     });
+  }
+
+  get contributionType() {
+    let contributionTypeString: string;
+    switch (this.myForm.controls.typeOfPeriod.value) {
+      case 'Month':
+        contributionTypeString = 'Monthly';
+        break;
+      case 'Year':
+        contributionTypeString = 'Annual';
+        break;
+    }
+    return contributionTypeString;
   }
 
   onSubmit(value: ChartDataRequest) {
