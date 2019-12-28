@@ -59,7 +59,9 @@ export class LineChartComponent implements OnChanges {
     const xValue = d => d.period;
     const xAxisLabel = 'Period';
 
-    const yValue = d => d.avg;
+    const yValueAvg = d => d.avg;
+    const yValueMin = d => d.min;
+    const yValueMax = d => d.max;
     const circleRadius = 6;
     const yAxisLabel = 'Capital';
 
@@ -75,7 +77,7 @@ export class LineChartComponent implements OnChanges {
 
     const yScale = d3
       .scaleLinear()
-      .domain(d3.extent(data, yValue))
+      .domain(d3.extent(data, yValueMax))
       .range([innerHeight, 0])
       .nice();
 
@@ -121,15 +123,45 @@ export class LineChartComponent implements OnChanges {
       .attr('fill', 'black')
       .text(xAxisLabel);
 
-    const lineGenerator = d3
+    const areaMinMax = d3
+      .area<ChartDataResponse>()
+      .x(d => xScale(xValue(d)))
+      .y0(d => yScale(yValueMin(d)))
+      .y1(d => yScale(yValueMax(d)));
+
+    g.append('path')
+      .attr('class', 'area')
+      .attr('d', areaMinMax(data));
+
+    const lineAverage = d3
       .line<ChartDataResponse>()
       .x(d => xScale(xValue(d)))
-      .y(d => yScale(yValue(d)))
+      .y(d => yScale(yValueAvg(d)))
       .curve(d3.curveBasis);
 
     g.append('path')
-      .attr('class', 'line-path')
-      .attr('d', lineGenerator(data));
+      .attr('class', 'line-path line-path__avg')
+      .attr('d', lineAverage(data));
+
+    const lineMax = d3
+      .line<ChartDataResponse>()
+      .x(d => xScale(xValue(d)))
+      .y(d => yScale(yValueMax(d)))
+      .curve(d3.curveBasis);
+
+    g.append('path')
+      .attr('class', 'line-path line-path__max')
+      .attr('d', lineMax(data));
+
+    const lineMin = d3
+      .line<ChartDataResponse>()
+      .x(d => xScale(xValue(d)))
+      .y(d => yScale(yValueMin(d)))
+      .curve(d3.curveBasis);
+
+    g.append('path')
+      .attr('class', 'line-path line-path__min')
+      .attr('d', lineMin(data));
 
     g.append('text')
       .attr('class', 'title')

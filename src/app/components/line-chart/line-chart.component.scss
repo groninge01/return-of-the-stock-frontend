@@ -11,9 +11,23 @@ app-line-chart {
 
   .line-path {
     fill: none;
-    stroke: steelblue;
     stroke-width: 2;
     stroke-linejoin: round;
+
+    &__avg {
+      stroke: steelblue;
+    }
+
+    &__min,
+    &__max {
+      stroke: lightgrey;
+      stroke-width: 1;
+    }
+  }
+
+  .area {
+    fill: lightpink;
+    fill-opacity: 0.25;
   }
 
   text {
