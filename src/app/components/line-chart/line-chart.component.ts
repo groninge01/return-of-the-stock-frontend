@@ -59,7 +59,7 @@ export class LineChartComponent implements OnChanges {
     const xValue = d => d.period;
     const xAxisLabel = 'Period';
 
-    const yValueAvg = d => d.avg;
+    const yValueMean = d => d.mean;
     const yValueMin = d => d.min;
     const yValueMax = d => d.max;
     const circleRadius = 6;
@@ -133,15 +133,15 @@ export class LineChartComponent implements OnChanges {
       .attr('class', 'area')
       .attr('d', areaMinMax(data));
 
-    const lineAverage = d3
+    const lineMean = d3
       .line<ChartDataResponse>()
       .x(d => xScale(xValue(d)))
-      .y(d => yScale(yValueAvg(d)))
+      .y(d => yScale(yValueMean(d)))
       .curve(d3.curveBasis);
 
     g.append('path')
-      .attr('class', 'line-path line-path__avg')
-      .attr('d', lineAverage(data));
+      .attr('class', 'line-path line-path__mean')
+      .attr('d', lineMean(data));
 
     const lineMax = d3
       .line<ChartDataResponse>()
