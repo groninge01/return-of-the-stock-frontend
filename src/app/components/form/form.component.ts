@@ -28,7 +28,7 @@ export class FormComponent implements OnInit {
     });
   }
 
-  get contributionType() {
+  get getContributionTypeString() {
     let contributionTypeString: string;
     switch (this.myForm.controls.typeOfPeriod.value) {
       case 'Month':
