@@ -1,5 +1,5 @@
 {
-  "/apitest": {
+  "/api/get-returns": {
     "target": "http://localhost:8000",
     "secure": false
   }

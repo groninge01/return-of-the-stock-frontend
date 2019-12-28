@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiHost: '',
-  apiUrl: '/apitest/'
+  apiUrl: '/api/get-returns/'
 };
 
 /*
