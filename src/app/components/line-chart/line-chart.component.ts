@@ -77,7 +77,7 @@ export class LineChartComponent implements OnChanges {
 
     const yScale = d3
       .scaleLinear()
-      .domain(d3.extent(data, yValueMax))
+      .domain([d3.min(data, yValueMin), d3.max(data, yValueMax)])
       .range([innerHeight, 0])
       .nice();
 
@@ -93,7 +93,8 @@ export class LineChartComponent implements OnChanges {
     const yAxis = d3
       .axisLeft(yScale)
       .tickSize(-innerWidth)
-      .tickPadding(15);
+      .tickPadding(15)
+      .tickFormat(d3.format('~s'));
 
     const yAxisG = g.append('g').call(yAxis);
     yAxisG.selectAll('.domain').remove();
