@@ -13,6 +13,9 @@
       formControlName="startingCapitalAmount"
       type="number"
     />
+    <mat-error>{{
+      getErrorMessage(myForm.controls.startingCapitalAmount)
+    }}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -22,6 +25,7 @@
         {{ period.viewValue }}
       </mat-option>
     </mat-select>
+    <mat-error>{{ getErrorMessage(myForm.controls.typeOfPeriod) }}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -31,6 +35,7 @@
       formControlName="additionAmount"
       type="number"
     />
+    <mat-error>{{ getErrorMessage(myForm.controls.additionAmount) }}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -40,10 +45,18 @@
       formControlName="numberOfPeriods"
       type="number"
     />
+    <mat-error>{{
+      getErrorMessage(myForm.controls.numberOfPeriods)
+    }}</mat-error>
   </mat-form-field>
 
   <div>
-    <button mat-raised-button color="primary" type="submit">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!myForm.valid"
+    >
       Get data!
     </button>
   </div>

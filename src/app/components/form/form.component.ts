@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import { Period, ChartDataRequest } from '../../data/data.model';
@@ -21,11 +26,32 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      startingCapitalAmount: [15000],
-      additionAmount: [1000],
-      numberOfPeriods: [144],
-      typeOfPeriod: ['Month']
+      startingCapitalAmount: [
+        15000,
+        [Validators.required, Validators.min(0), Validators.max(1000000)]
+      ],
+      additionAmount: [
+        1000,
+        [Validators.required, Validators.min(0), Validators.max(100000)]
+      ],
+      numberOfPeriods: [
+        144,
+        [Validators.required, Validators.min(0), Validators.max(1000)]
+      ],
+      typeOfPeriod: ['Month', [Validators.required]]
     });
+  }
+
+  getErrorMessage(control: FormControl): string {
+    if (control) {
+      if (control.hasError('required'))
+        return 'This field is required and cannot be empty!';
+      if (control.hasError('min'))
+        return `Input should be >= ${control.errors.min.min}!`;
+      if (control.hasError('max'))
+        return `Input should be <= ${control.errors.max.max}!`;
+    }
+    return '';
   }
 
   get getContributionTypeString() {
