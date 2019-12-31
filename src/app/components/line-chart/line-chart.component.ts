@@ -43,6 +43,8 @@ export class LineChartComponent implements OnChanges {
     const element = this.chartContainer.nativeElement;
     const data = this.data;
 
+    console.log(data);
+
     const width = element.offsetWidth;
     const height = element.offsetHeight;
 
@@ -56,8 +58,8 @@ export class LineChartComponent implements OnChanges {
 
     const title = 'Total growth of capital';
 
-    const xValue = d => d.period;
-    const xAxisLabel = 'Period';
+    const xValue = d => d.years;
+    const xAxisLabel = 'Years';
 
     const yValueMean = d => d.mean;
     const yValueMin = d => d.min;

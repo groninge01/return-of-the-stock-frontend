@@ -19,19 +19,9 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Compound Frequency</mat-label>
-    <mat-select formControlName="typeOfPeriod">
-      <mat-option *ngFor="let period of periods" [value]="period.value">
-        {{ period.viewValue }}
-      </mat-option>
-    </mat-select>
-    <mat-error>{{ getErrorMessage(myForm.controls.typeOfPeriod) }}</mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
     <input
       matInput
-      placeholder="{{ getContributionTypeString }} Contribution"
+      placeholder="Monthly Contribution"
       formControlName="additionAmount"
       type="number"
     />
@@ -41,13 +31,11 @@
   <mat-form-field>
     <input
       matInput
-      placeholder="Number Of {{ myForm.controls.typeOfPeriod.value }}s"
-      formControlName="numberOfPeriods"
+      placeholder="Number Of Years Investing"
+      formControlName="numberOfYears"
       type="number"
     />
-    <mat-error>{{
-      getErrorMessage(myForm.controls.numberOfPeriods)
-    }}</mat-error>
+    <mat-error>{{ getErrorMessage(myForm.controls.numberOfY) }}</mat-error>
   </mat-form-field>
 
   <div>

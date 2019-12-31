@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { Period, ChartDataRequest } from '../../data/data.model';
+import { ChartDataRequest } from '../../data/data.model';
 import { setChartData } from '../../store/actions/chart-data.actions';
 
 @Component({
@@ -17,10 +17,6 @@ import { setChartData } from '../../store/actions/chart-data.actions';
 })
 export class FormComponent implements OnInit {
   myForm: FormGroup;
-  periods: Period[] = [
-    { viewValue: 'Monthly', value: 'Month' },
-    { viewValue: 'Annually', value: 'Year' }
-  ];
 
   constructor(private fb: FormBuilder, private store: Store<any>) {}
 
@@ -34,11 +30,10 @@ export class FormComponent implements OnInit {
         1000,
         [Validators.required, Validators.min(0), Validators.max(100000)]
       ],
-      numberOfPeriods: [
-        144,
-        [Validators.required, Validators.min(0), Validators.max(1000)]
-      ],
-      typeOfPeriod: ['Month', [Validators.required]]
+      numberOfYears: [
+        12,
+        [Validators.required, Validators.min(1), Validators.max(40)]
+      ]
     });
   }
 
@@ -52,19 +47,6 @@ export class FormComponent implements OnInit {
         return `Input should be <= ${control.errors.max.max}!`;
     }
     return '';
-  }
-
-  get getContributionTypeString() {
-    let contributionTypeString: string;
-    switch (this.myForm.controls.typeOfPeriod.value) {
-      case 'Month':
-        contributionTypeString = 'Monthly';
-        break;
-      case 'Year':
-        contributionTypeString = 'Annual';
-        break;
-    }
-    return contributionTypeString;
   }
 
   onSubmit(value: ChartDataRequest) {
