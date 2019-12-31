@@ -3,7 +3,7 @@ import {
   FormBuilder,
   FormGroup,
   Validators,
-  FormControl
+  AbstractControl
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
@@ -37,7 +37,7 @@ export class FormComponent implements OnInit {
     });
   }
 
-  getErrorMessage(control: FormControl): string {
+  getErrorMessage(control: AbstractControl): string {
     if (control) {
       if (control.hasError('required'))
         return 'This field is required and cannot be empty!';
