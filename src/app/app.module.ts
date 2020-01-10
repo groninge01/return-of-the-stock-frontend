@@ -11,6 +11,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppEffects } from './store/effects/app.effects';
 import { reducers, metaReducers } from './store/reducers';
 
+import { HighchartsChartModule } from 'highcharts-angular';
+
 import { MaterialModule } from './material/material.module';
 
 import { AppComponent } from './app.component';
@@ -27,6 +29,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    HighchartsChartModule,
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
