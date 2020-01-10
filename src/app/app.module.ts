@@ -11,22 +11,25 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppEffects } from './store/effects/app.effects';
 import { reducers, metaReducers } from './store/reducers';
 
+import { HighchartsChartModule } from 'highcharts-angular';
+
 import { MaterialModule } from './material/material.module';
 
 import { AppComponent } from './app.component';
-import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { FormComponent } from './components/form/form.component';
+import { ChartOutputComponent } from './components/chart-output/chart-output.component';
 
 import { CalculateReturnsService } from 'src/app/services/calculate-returns.service';
 
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent, LineChartComponent, FormComponent],
+  declarations: [AppComponent, FormComponent, ChartOutputComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    HighchartsChartModule,
     MaterialModule,
     FlexLayoutModule,
     FormsModule,

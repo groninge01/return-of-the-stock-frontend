@@ -15,7 +15,7 @@ import { ChartDataResponse } from './data/data.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  data: ChartDataResponse[];
+  data;
 
   constructor(private store: Store<any>) {}
 
@@ -24,10 +24,8 @@ export class AppComponent implements OnInit {
     //   .select(state => state.feature.chartDataResponses)
     //   .pipe(distinctUntilChanged())
     //   .subscribe(data => (this.data = data));
-    this.store
-      .pipe(distinctUntilChanged())
-      .subscribe(
-        data => (this.data = data.chartDataResponse.chartDataResponses)
-      );
+    this.store.pipe(distinctUntilChanged()).subscribe(data => {
+      this.data = data.chartDataResponse.chartDataResponses;
+    });
   }
 }
