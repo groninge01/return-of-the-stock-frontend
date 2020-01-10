@@ -17,11 +17,11 @@ import { MaterialModule } from './material/material.module';
 
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
+import { ChartOutputComponent } from './components/chart-output/chart-output.component';
 
 import { CalculateReturnsService } from 'src/app/services/calculate-returns.service';
 
 import { environment } from '../environments/environment';
-import { ChartOutputComponent } from './components/chart-output/chart-output.component';
 
 @NgModule({
   declarations: [AppComponent, FormComponent, ChartOutputComponent],
