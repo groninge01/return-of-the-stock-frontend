@@ -18,7 +18,7 @@ export class ChartOutputComponent implements OnChanges {
   chartOptions; // required
   updateFlag: boolean = false; // optional boolean
   oneToOneFlag: boolean = true; // optional boolean, defaults to false
-  runOutsideAngular: boolean = false; // optional boolean, defaults to false
+  runOutsideAngularFlag: boolean = false; // optional boolean, defaults to false
 
   constructor() {}
 
