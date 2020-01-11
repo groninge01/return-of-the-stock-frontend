@@ -51,13 +51,29 @@ export class ChartOutputComponent implements OnChanges {
           text: 'Capital'
         }
       },
+
       legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
+        enabled: false
       },
 
       tooltip: {
+        formatter: function() {
+          console.log(this.points);
+          return (
+            'Year ' +
+            this.points[0].x +
+            '<br/><b>' +
+            this.points[0].series.name +
+            ':</b> ' +
+            Math.round(this.points[0].y) +
+            '<br/><b>' +
+            this.points[1].series.name +
+            ':</b> ' +
+            Math.round(this.points[1].point.low) +
+            ' - ' +
+            Math.round(this.points[1].point.high)
+          );
+        },
         crosshairs: true,
         shared: true
       },
@@ -73,7 +89,7 @@ export class ChartOutputComponent implements OnChanges {
 
       series: [
         {
-          name: 'Median',
+          name: 'Value',
           data: median,
           zIndex: 1,
           marker: {
@@ -84,7 +100,7 @@ export class ChartOutputComponent implements OnChanges {
         },
 
         {
-          name: 'MinMax',
+          name: 'Range',
           data: minMax,
           type: 'arearange',
           lineWidth: 0,
