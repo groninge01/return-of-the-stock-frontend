@@ -49,7 +49,12 @@ export class ChartOutputComponent implements OnChanges {
       yAxis: {
         title: {
           text: 'Capital'
-        }
+      },
+        min: 0
+      },
+
+      xAxis: {
+        tickInterval: 2
       },
 
       legend: {
@@ -58,7 +63,6 @@ export class ChartOutputComponent implements OnChanges {
 
       tooltip: {
         formatter: function() {
-          console.log(this.points);
           return (
             'Year ' +
             this.points[0].x +
@@ -66,11 +70,9 @@ export class ChartOutputComponent implements OnChanges {
             this.points[0].series.name +
             ':</b> ' +
             Math.round(this.points[0].y) +
-            '<br/><b>' +
-            this.points[1].series.name +
-            ':</b> ' +
+            '<br/><b>Min value:</b> ' +
             Math.round(this.points[1].point.low) +
-            ' - ' +
+            '<br/><b>Max value:</b> ' +
             Math.round(this.points[1].point.high)
           );
         },
@@ -89,7 +91,7 @@ export class ChartOutputComponent implements OnChanges {
 
       series: [
         {
-          name: 'Value',
+          name: 'Median value',
           data: median,
           zIndex: 1,
           marker: {
