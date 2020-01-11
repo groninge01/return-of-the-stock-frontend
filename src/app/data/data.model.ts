@@ -1,5 +1,4 @@
 export interface ChartDataResponse {
-  years: number;
   mean: number;
   min: number;
   max: number;

@@ -15,7 +15,7 @@ import { ChartDataResponse } from './data/data.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  data;
+  data: ChartDataResponse[];
 
   constructor(private store: Store<any>) {}
 
