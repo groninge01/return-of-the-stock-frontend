@@ -6,7 +6,7 @@ export const chartDataFeatureKey = 'chartData';
 export interface FeatureState {
   startingCapitalAmount: number;
   additionAmount: number;
-  numberOfPeriods: number;
+  numberOfYears: number;
 }
 
 export interface AppState {
@@ -16,7 +16,7 @@ export interface AppState {
 export const initialState: FeatureState = {
   startingCapitalAmount: null,
   additionAmount: null,
-  numberOfPeriods: null
+  numberOfYears: null
 };
 
 const chartDataReducer = createReducer(
@@ -25,7 +25,7 @@ const chartDataReducer = createReducer(
     ...state,
     startingCapitalAmount: chartDataRequest.startingCapitalAmount,
     additionAmount: chartDataRequest.additionAmount,
-    numberOfPeriods: chartDataRequest.numberOfPeriods
+    numberOfYears: chartDataRequest.numberOfYears
   }))
 );
 
