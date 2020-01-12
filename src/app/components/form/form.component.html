@@ -4,7 +4,6 @@
   fxLayoutAlign="center"
   fxLayoutGap="10px"
   [formGroup]="myForm"
-  (ngSubmit)="onSubmit(myForm.value)"
 >
   <mat-form-field>
     <input
@@ -37,15 +36,4 @@
     />
     <mat-error>{{ getErrorMessage(myForm.controls.numberOfY) }}</mat-error>
   </mat-form-field>
-
-  <div>
-    <button
-      mat-raised-button
-      color="primary"
-      type="submit"
-      [disabled]="!myForm.valid"
-    >
-      Get data!
-    </button>
-  </div>
 </form>

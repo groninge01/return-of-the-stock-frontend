@@ -6,6 +6,8 @@ import {
   AbstractControl
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { combineLatest } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { ChartDataRequest } from '../../data/data.model';
 import { setChartData } from '../../store/actions/chart-data.actions';
@@ -23,7 +25,7 @@ export class FormComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.fb.group({
       startingCapitalAmount: [
-        15000,
+        17000,
         [Validators.required, Validators.min(0), Validators.max(1000000)]
       ],
       additionAmount: [
@@ -34,6 +36,40 @@ export class FormComponent implements OnInit {
         12,
         [Validators.required, Validators.min(1), Validators.max(40)]
       ]
+    });
+
+    this.onChanges();
+  }
+
+  onChanges() {
+    const formFieldArray = [
+      this.myForm.controls.startingCapitalAmount.valueChanges,
+      this.myForm.controls.additionAmount.valueChanges,
+      this.myForm.controls.numberOfYears.valueChanges
+    ];
+
+    combineLatest(formFieldArray)
+      .pipe(debounceTime(500), distinctUntilChanged())
+      .subscribe(() => {
+        if (this.myForm.valid) {
+          const update = {
+            startingCapitalAmount: this.myForm.controls.startingCapitalAmount
+              .value,
+            additionAmount: this.myForm.controls.additionAmount.value,
+            numberOfYears: this.myForm.controls.numberOfYears.value
+          };
+          this.store.dispatch(setChartData(update));
+        }
+      });
+
+    this.myForm.controls.startingCapitalAmount.updateValueAndValidity({
+      emitEvent: true
+    });
+    this.myForm.controls.additionAmount.updateValueAndValidity({
+      emitEvent: true
+    });
+    this.myForm.controls.numberOfYears.updateValueAndValidity({
+      emitEvent: true
     });
   }
 
@@ -47,9 +83,5 @@ export class FormComponent implements OnInit {
         return `Input should be <= ${control.errors.max.max}!`;
     }
     return '';
-  }
-
-  onSubmit(value: ChartDataRequest) {
-    this.store.dispatch(setChartData(value));
   }
 }
