@@ -7,5 +7,5 @@ export interface ChartDataResponse {
 export interface ChartDataRequest {
   startingCapitalAmount: number;
   additionAmount: number;
-  numberOfPeriods: number;
+  numberOfYears: number;
 }
