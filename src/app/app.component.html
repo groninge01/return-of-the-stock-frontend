@@ -1,20 +1,34 @@
-<div
-  fxFlex
-  fxLayout="row"
-  fxLayoutAlign="center"
-  fxLayoutGap="10px"
-  fxLayout.xs="column"
->
-  <mat-card class="card">
-    <mat-card-content>
-      <div class="container">
-        <app-form></app-form>
+<div fxFlexFill fxLayout="row">
+  <div fxFlex="20%" fxFlex.xs="0"></div>
+  <div fxFlex>
+    <div fxFlexFill fxLayout="column">
+      <div>Header</div>
+      <div
+        fxFlex
+        fxLayout="row"
+        fxLayoutAlign="center"
+        fxLayoutGap="10px"
+        fxLayout.xs="column"
+        fxLayoutGap.xs="0"
+      >
+        <mat-card class="card">
+          <mat-card-content>
+            <div class="container">
+              <app-form></app-form>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card fxFlex="50%" class="card">
+          <mat-card-content>
+            <app-chart-output
+              [data]="data"
+              [loading]="loading"
+            ></app-chart-output>
+          </mat-card-content>
+        </mat-card>
       </div>
-    </mat-card-content>
-  </mat-card>
-  <mat-card fxFlex="50%" class="card">
-    <mat-card-content>
-      <app-chart-output [data]="data" [loading]="loading"></app-chart-output>
-    </mat-card-content>
-  </mat-card>
+      <div>Footer</div>
+    </div>
+  </div>
+  <div fxFlex="20%" fxFlex.xs="0"></div>
 </div>
