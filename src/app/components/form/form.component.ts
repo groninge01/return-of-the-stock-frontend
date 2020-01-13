@@ -10,7 +10,7 @@ import { combineLatest } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { ChartDataRequest } from '../../data/data.model';
-import { setChartData } from '../../store/actions/chart-data.actions';
+import { loadChartData } from '../../store/actions/chart-data.actions';
 
 @Component({
   selector: 'app-form',
@@ -19,6 +19,7 @@ import { setChartData } from '../../store/actions/chart-data.actions';
 })
 export class FormComponent implements OnInit {
   myForm: FormGroup;
+  chartData: ChartDataRequest;
 
   constructor(private fb: FormBuilder, private store: Store<any>) {}
 
@@ -52,13 +53,13 @@ export class FormComponent implements OnInit {
       .pipe(debounceTime(500), distinctUntilChanged())
       .subscribe(() => {
         if (this.myForm.valid) {
-          const update = {
+          this.chartData = {
             startingCapitalAmount: this.myForm.controls.startingCapitalAmount
               .value,
             additionAmount: this.myForm.controls.additionAmount.value,
             numberOfYears: this.myForm.controls.numberOfYears.value
           };
-          this.store.dispatch(setChartData(update));
+          this.store.dispatch(loadChartData({ chartData: this.chartData }));
         }
       });
 

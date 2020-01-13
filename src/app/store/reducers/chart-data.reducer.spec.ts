@@ -1,4 +1,4 @@
-import { reducer, initialState } from './chart-data-request.reducer';
+import { reducer, initialState } from './chart-data.reducer';
 
 describe('ChartData Reducer', () => {
   describe('an unknown action', () => {

@@ -1,12 +1,13 @@
 import { Action, createReducer, on, createSelector } from '@ngrx/store';
 import * as ChartDataActions from '../actions/chart-data.actions';
+import { ChartDataResponse } from '../../data/data.model';
 
 export const chartDataFeatureKey = 'chartData';
 
 export interface FeatureState {
-  startingCapitalAmount: number;
-  additionAmount: number;
-  numberOfYears: number;
+  isLoading: boolean;
+  errorMessage: any;
+  chartData: ChartDataResponse[];
 }
 
 export interface AppState {
@@ -14,18 +15,28 @@ export interface AppState {
 }
 
 export const initialState: FeatureState = {
-  startingCapitalAmount: null,
-  additionAmount: null,
-  numberOfYears: null
+  isLoading: false,
+  errorMessage: null,
+  chartData: []
 };
 
 const chartDataReducer = createReducer(
   initialState,
-  on(ChartDataActions.setChartData, (state, chartDataRequest) => ({
+  on(ChartDataActions.loadChartData, state => ({
     ...state,
-    startingCapitalAmount: chartDataRequest.startingCapitalAmount,
-    additionAmount: chartDataRequest.additionAmount,
-    numberOfYears: chartDataRequest.numberOfYears
+    isLoading: true,
+    errorMessage: null
+  })),
+  on(ChartDataActions.loadChartDataSuccess, (state, { chartData }) => ({
+    ...state,
+    isLoading: false,
+    errorMessage: null,
+    chartData
+  })),
+  on(ChartDataActions.loadChartDataFailure, (state, { errorMessage }) => ({
+    ...state,
+    isLoading: false,
+    errorMessage: errorMessage
   }))
 );
 
@@ -37,5 +48,5 @@ export const selectFeature = (state: AppState) => state.feature;
 
 export const selectFeatureChartData = createSelector(
   selectFeature,
-  (state: FeatureState) => state
+  (state: FeatureState) => state.chartData
 );
