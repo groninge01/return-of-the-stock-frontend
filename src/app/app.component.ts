@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 
 import { ChartDataResponse } from './data/data.model';
 
@@ -16,9 +16,11 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
-    this.store.pipe(distinctUntilChanged()).subscribe(data => {
-      this.data = data.chartData.chartData;
-      this.loading = data.chartData.isLoading;
-    });
+    this.store
+      .pipe(distinctUntilChanged(), debounceTime(1000))
+      .subscribe(data => {
+        this.data = data.chartData.chartData;
+        this.loading = data.chartData.isLoading;
+      });
   }
 }
