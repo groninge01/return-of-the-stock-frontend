@@ -1,4 +1,4 @@
-<ng-container *ngIf="data">
+<ng-container *ngIf="!loading; else spinner">
   <highcharts-chart
     [Highcharts]="Highcharts"
     [constructorType]="chartConstructor"
@@ -9,3 +9,8 @@
     style="width: 100%; height: 100%; display: block;"
   ></highcharts-chart>
 </ng-container>
+<ng-template #spinner>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

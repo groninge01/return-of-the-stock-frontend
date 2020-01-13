@@ -13,6 +13,8 @@ export class ChartOutputComponent implements OnChanges {
   @Input()
   data;
 
+  @Input() loading: boolean;
+
   Highcharts: typeof Highcharts = Highcharts; // required
   chartConstructor: string = 'chart'; // optional string, defaults to 'chart'
   chartOptions; // required
@@ -49,7 +51,7 @@ export class ChartOutputComponent implements OnChanges {
       yAxis: {
         title: {
           text: 'Capital'
-      },
+        },
         min: 0
       },
 
